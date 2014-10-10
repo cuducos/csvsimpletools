@@ -12,6 +12,20 @@ header a, header a:hover {
     color: #4a6f9d  ;
 }
 
+header ul {
+    margin-top: 2.5em;
+}
+
+header ul li {
+    border-left: 1px solid #e3e3e3;
+    padding-left: 5px;
+}
+
+header ul li:first-child{
+    border-left: none;
+    padding-left: 0;
+}
+
 /************************************************************/
 /* Tooltips                                                 */
 /************************************************************/

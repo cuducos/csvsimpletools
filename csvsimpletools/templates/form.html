@@ -1,26 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
-                <form class="row" action="/result" method="POST" enctype="multipart/form-data">
+                <form class="row" action="/{{ lang }}/result" method="POST" enctype="multipart/form-data">
                     
                     <fieldset class="col-md-4">
-                        <label class="h3" for="csv">1. Choose your CSV file</label>
+                        <label class="h3" for="csv">1. {{_('Choose your CSV file') }}</label>
                         <input type="file" name="csv" id="csv" />
                     </fieldset>
 
                     <fieldset class="col-md-4" id="commands">
-                        <h3>2. Choose what to do</h3>
+                        <h3>2. {{ _('Choose what to do') }}</h3>
                         <ul class="list-unstyled">
                             {% for command in commands %}
                             <li>
                                 <input type="radio" name="command" id="radio_command_{{ command[0] }}" value="{{ command[0] }}" />
                                 <label for="radio_command_{{ command[0] }}">{{ command[1] }}</label>
-                                <button id="btn_example_{{ command[0] }}" class="btn btn-default btn-xs example">Example</button>
+                                <button id="btn_example_{{ command[0] }}"
+                                    class="btn btn-default btn-xs example">{{ _('Example') }}</button>
                                 <div class="example small" id="box_example_{{ command[0] }}">
                                     <h5>{{ command[1] }}</h5>
                                     <p>{{ tooltips[command[0]][0] }}<p>
-                                    <h6>Input:</h6>
+                                    <h6>{{ _('Input') }}:</h6>
                                     <pre>{{ tooltips[command[0]][1] }}</pre>
-                                    <h6>Output:</h6>
+                                    <h6>{{ _('Output') }}:</h6>
                                     <pre>{{ tooltips[command[0]][2] }}</pre>
                             </li>
                             {% endfor %}
@@ -28,9 +29,9 @@
                     </fieldset>
 
                     <fieldset class="col-md-4">
-                        <h3>3. Get your new CSV</h3>
+                        <h3>3. {{ _('Get your new CSV') }}</h3>
                         <input id="csrf_token" name="csrf_token" type="hidden" value="{{ csrf_token() }}" />
-                        <input id="submit_btn" type="submit" class="btn btn-primary" value="Download" />
+                        <input id="submit_btn" type="submit" class="btn btn-primary" value="{{ _('Download') }}" />
                     </fieldset>
                 
                 </form>

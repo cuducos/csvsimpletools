@@ -1,0 +1,152 @@
+# Translations template for PROJECT.
+# Copyright (C) 2014 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2014-10-10 14:14-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#: csvsimpletools/csv_commands.py:7
+msgid "Sentence Case"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:8
+msgid "Title Case"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:9
+msgid "Upper Case"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:10
+msgid "Lower Case"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:11
+msgid "Concatenate"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:12
+msgid "Remove Special Chars"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:13
+msgid "Alphanumeric Only"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:14
+msgid "Add sequential numbers"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:18
+msgid ""
+"Add a column to the end of the CSV with the value of the first column in "
+"sentence case."
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:22
+msgid ""
+"Add a column to the end of the CSV with the value of the first column in "
+"title case."
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:26
+msgid ""
+"Add a column to the end of the CSV with the value of the first column in "
+"upper case."
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:30
+msgid ""
+"Add a column to the end of the CSV with the value of the first column in "
+"lower case."
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:34
+msgid ""
+"Add a column to the end of the CSV with the value of the first and second"
+" columns concatenated."
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:38
+msgid ""
+"Add a column to the end of the CSV with the value of the first column "
+"replacing any special character."
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:42
+msgid ""
+"Add a column to the end of the CSV with the value of the first column "
+"keeping only letters and numbers ."
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:46
+msgid ""
+"Add a column to the end of the CSV with a sequential number (starting "
+"with 1, with increment in each row)."
+msgstr ""
+
+#: csvsimpletools/forms.py:15
+msgid "Please, use .csv files only."
+msgstr ""
+
+#: csvsimpletools/templates/base.html:8 csvsimpletools/templates/base.html:21
+#: csvsimpletools/templates/base.html:27
+msgid "CSV Simple Tools"
+msgstr ""
+
+#: csvsimpletools/templates/base.html:27
+msgid "by"
+msgstr ""
+
+#: csvsimpletools/templates/base.html:28
+msgid "This project uses no database at all, no input data is stored"
+msgstr ""
+
+#: csvsimpletools/templates/base.html:29
+msgid "It's open source, check"
+msgstr ""
+
+#: csvsimpletools/templates/base.html:29
+msgid "this project at GitHub"
+msgstr ""
+
+#: csvsimpletools/templates/form.html:6
+msgid "Choose your CSV file"
+msgstr ""
+
+#: csvsimpletools/templates/form.html:11
+msgid "Choose what to do"
+msgstr ""
+
+#: csvsimpletools/templates/form.html:18
+msgid "Example"
+msgstr ""
+
+#: csvsimpletools/templates/form.html:22
+msgid "Input"
+msgstr ""
+
+#: csvsimpletools/templates/form.html:24
+msgid "Output"
+msgstr ""
+
+#: csvsimpletools/templates/form.html:32
+msgid "Get your new CSV"
+msgstr ""
+
+#: csvsimpletools/templates/form.html:34
+msgid "Download"
+msgstr ""
+

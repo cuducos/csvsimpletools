@@ -2,8 +2,8 @@
 import csv_commands
 import sys
 from csv import reader, writer
-from csvsimpletools import app
-from flask import make_response, render_template, request
+from csvsimpletools import app, babel
+from flask import g, make_response, redirect, render_template, request
 from forms import GetCSV
 from tempfile import TemporaryFile
 
@@ -12,14 +12,21 @@ sys.setdefaultencoding('utf-8')
 
 
 @app.route('/')
+def deafult_language():
+        return redirect('/en')
+
+
+@app.route('/<lang>')
 def index():
     return render_template('form.html',
-                           commands=app.config['COMMANDS'],
-                           tooltips=app.config['TOOLTIPS'],
+                           commands=csv_commands.commands,
+                           tooltips=csv_commands.tooltips,
+                           languages=app.config['LANGUAGES'],
+                           lang=g.get('lang', 'en'),
                            form=GetCSV())
 
 
-@app.route('/result', methods=('GET', 'POST'))
+@app.route('/<lang>/result', methods=('GET', 'POST'))
 def result():
 
     # load form
@@ -73,3 +80,20 @@ def result():
 
     # else, return error
     return 'Error(s): '.format(form.errors)
+
+
+@app.before_request
+def before():
+    if request.view_args and 'lang' in request.view_args:
+        allow = app.config['LANGUAGES'].keys()
+        user_choice = request.view_args['lang']
+        if user_choice in allow:
+            g.lang = user_choice
+        else:
+            g.lang = request.accept_languages.best_match(allow)
+        request.view_args.pop('lang')
+
+
+@babel.localeselector
+def get_locale():
+    return g.get('lang', 'en')
