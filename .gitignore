@@ -1,0 +1,7 @@
+.env
+*.pyc
+*.DS_Store
+*.swp
+*.swo
+.ropeproject/
+/contrib/*.csv
