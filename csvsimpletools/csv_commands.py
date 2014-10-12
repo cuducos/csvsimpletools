@@ -55,7 +55,7 @@ tooltips = {
 
 
 def sentence(lines):
-    output = []
+    output = list()
     for line in lines:
         value = line[0]
         new_line = list(line)
@@ -65,7 +65,7 @@ def sentence(lines):
 
 
 def title(lines):
-    output = []
+    output = list()
     for line in lines:
         value = line[0]
         new_line = list(line)
@@ -75,7 +75,7 @@ def title(lines):
 
 
 def upper(lines):
-    output = []
+    output = list()
     for line in lines:
         value = line[0]
         new_line = list(line)
@@ -85,7 +85,7 @@ def upper(lines):
 
 
 def lower(lines):
-    output = []
+    output = list()
     for line in lines:
         value = line[0]
         new_line = list(line)
@@ -95,7 +95,7 @@ def lower(lines):
 
 
 def concatenate(lines):
-    output = []
+    output = list()
     for line in lines:
         value = '{}{}'.format(line[0], line[1])
         new_line = list(line)
@@ -105,7 +105,7 @@ def concatenate(lines):
 
 
 def special(lines):
-    output = []
+    output = list()
     for line in lines:
         v = u'{}'.format(line[0])
         value = ''.join(c for c in normalize('NFD', v) if category(c) != 'Mn')
@@ -116,7 +116,7 @@ def special(lines):
 
 
 def alphanum(lines):
-    output = []
+    output = list()
     regex = re.compile('[^a-zA-Z0-9]+')
     for line in lines:
         value = line[0]
@@ -127,7 +127,7 @@ def alphanum(lines):
 
 
 def sequentiial(lines):
-    output = []
+    output = list()
     count = 1
     for line in lines:
         new_line = list(line)
