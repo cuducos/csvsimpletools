@@ -11,7 +11,7 @@ class GetCSV(Form):
     csv = FileField(
         'CSV File',
         validators=[FileRequired(),
-                    FileAllowed(['csv'],
-                    gettext('Please, use .csv files only.'))])
+                    FileAllowed(['csv', 'txt'],
+                    gettext('Please, a CSV file (.txt or .csv)'))])
 
     command = RadioField('Commands to execute', choices=commands)
