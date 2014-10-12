@@ -45,22 +45,8 @@ def result():
 
         # parse and process the CSV
         command = form.command.data
-        if command == 'sentence':
-            new = csv_commands.sentence(lines)
-        elif command == 'title':
-            new = csv_commands.title(lines)
-        elif command == 'upper':
-            new = csv_commands.upper(lines)
-        elif command == 'lower':
-            new = csv_commands.lower(lines)
-        elif command == 'concatenate':
-            new = csv_commands.concatenate(lines)
-        elif command == 'special':
-            new = csv_commands.special(lines)
-        elif command == 'alphanum':
-            new = csv_commands.alphanum(lines)
-        elif command == 'sequential':
-            new = csv_commands.sequential(lines)
+        if command in csv_commands.tooltips.keys():
+            new = eval('csv_commands.{}(lines)'.format(command))
         else:
             new = list(lines)
 

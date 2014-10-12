@@ -11,7 +11,8 @@ commands = [('sentence', lazy_gettext('Sentence Case')),
             ('concatenate', lazy_gettext('Concatenate')),
             ('special', lazy_gettext('Remove Special Chars')),
             ('alphanum', lazy_gettext('Alphanumeric Only')),
-            ('sequential', lazy_gettext('Add sequential numbers'))]
+            ('sequential', lazy_gettext('Sequential numbers')),
+            ('dualseq', lazy_gettext('Dual sequential numbers'))]
 
 tooltips = {
     'sentence':
@@ -45,7 +46,11 @@ tooltips = {
     'sequential':
         [lazy_gettext('Add a column to the end of the CSV with a sequential number (starting with 1, with increment in each row).'),
          'foobar,42',
-         'foobar,42,1']
+         'foobar,42,1'],
+    'dualseq':
+        [lazy_gettext('Add two columns to the end of the CSV with a sequential number for each different first and second column.'),
+         'foo,bar\nfoo,etc\nxpto,bar',
+         'foo,bar,00000001,00000001\nfoo,etc,00000001,00000002\nxpto,bar,00000002,00000001']
 }
 
 
@@ -121,7 +126,7 @@ def alphanum(lines):
     return output
 
 
-def sequential(lines):
+def sequentiial(lines):
     output = []
     count = 1
     for line in lines:
@@ -129,4 +134,33 @@ def sequential(lines):
         new_line.append(str(count))
         output.append(new_line)
         count = count + 1
+    return output
+
+
+def dualseq(lines):
+
+    # support vars
+    output = list()
+    a_fields = list()
+    b_fields = list()
+
+    # first loop: get all different fields
+    for line in lines:
+
+        # create lists with unique items
+        if line[0] not in a_fields:
+            a_fields.append(line[0])
+        if line[1] not in b_fields:
+            b_fields.append(line[1])
+
+        # feed the output list
+        output.append(line)
+
+    # second loop: create the codes
+    for i in range(0, len(output)):
+        a_code = '{0:0>8}'.format(a_fields.index(output[i][0]) + 1)
+        b_code = '{0:0>8}'.format(b_fields.index(output[i][1]) + 1)
+        output[i].append(a_code)
+        output[i].append(b_code)
+
     return output
