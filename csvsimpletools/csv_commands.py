@@ -126,7 +126,7 @@ def alphanum(lines):
     return output
 
 
-def sequentiial(lines):
+def sequential(lines):
     output = list()
     count = 1
     for line in lines:
