@@ -1,4 +1,4 @@
-{f extends "base.html" %}
+{% extends "base.html" %}
 {% block content %}
                 <form class="row" action="/{{ lang }}/result" method="POST" enctype="multipart/form-data">
                     {{ form.csrf_token }} 
@@ -23,6 +23,7 @@
                                     <pre>{{ tooltips[command[0]][1] }}</pre>
                                     <h6>{{ _('Output') }}:</h6>
                                     <pre>{{ tooltips[command[0]][2] }}</pre>
+                                </div>
                             </li>
                             {% endfor %}
                         </ul>
