@@ -6,3 +6,4 @@
 .ropeproject/
 /contrib/*.csv
 .vagrant
+*.log

@@ -14,7 +14,7 @@ babel = Babel(app)
 if not app.config['DEBUG']:
     import logging
     from logging.handlers import RotatingFileHandler
-    filepath = app.config['BASEDIR'].child('errors.log')
+    filepath = '{}/errors.log'.format(app.config['BASEDIR'])
     handler = RotatingFileHandler(filepath, 'a', 1 * 1024 * 1024, 10)
     row = '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
     formatter = logging.Formatter(row)
