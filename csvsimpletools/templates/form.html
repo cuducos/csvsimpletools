@@ -1,10 +1,10 @@
-{% extends "base.html" %}
+{f extends "base.html" %}
 {% block content %}
                 <form class="row" action="/{{ lang }}/result" method="POST" enctype="multipart/form-data">
-                    
+                    {{ form.csrf_token }} 
                     <fieldset class="col-md-4">
                         <label class="h3" for="csv">1. {{_('Choose your CSV file') }}</label>
-                        <input type="file" name="csv" id="csv" />
+                        <input type="file" name="csv" id="csv">
                     </fieldset>
 
                     <fieldset class="col-md-4" id="commands">
@@ -12,7 +12,7 @@
                         <ul class="list-unstyled">
                             {% for command in commands %}
                             <li>
-                                <input type="radio" name="command" id="radio_command_{{ command[0] }}" value="{{ command[0] }}" />
+                                <input type="radio" name="command" id="radio_command_{{ command[0] }}" value="{{ command[0] }}">
                                 <label for="radio_command_{{ command[0] }}">{{ command[1] }}</label>
                                 <button id="btn_example_{{ command[0] }}"
                                     class="btn btn-default btn-xs example">{{ _('Example') }}</button>
@@ -30,8 +30,7 @@
 
                     <fieldset class="col-md-4">
                         <h3>3. {{ _('Get your new CSV') }}</h3>
-                        <input id="csrf_token" name="csrf_token" type="hidden" value="{{ csrf_token() }}" />
-                        <input id="submit_btn" type="submit" class="btn btn-primary" value="{{ _('Download') }}" />
+                        <input id="submit_btn" type="submit" class="btn btn-primary" value="{{ _('Download') }}">
                     </fieldset>
                 
                 </form>
