@@ -10,19 +10,19 @@
                     <fieldset class="col-md-4" id="commands">
                         <h3>2. {{ _('Choose what to do') }}</h3>
                         <ul class="list-unstyled">
-                            {% for command in commands %}
+                            {% for command in command_list %}
                             <li>
-                                <input type="radio" name="command" id="radio_command_{{ command[0] }}" value="{{ command[0] }}">
-                                <label for="radio_command_{{ command[0] }}">{{ command[1] }}</label>
-                                <button id="btn_example_{{ command[0] }}"
+                                <input type="radio" name="command" id="radio_command_{{ command }}" value="{{ command[0] }}">
+                                <label for="radio_command_{{ command }}">{{ commands[command]['title'] }}</label>
+                                <button id="btn_example_{{ command }}"
                                     class="btn btn-default btn-xs example">{{ _('Example') }}</button>
-                                <div class="example small" id="box_example_{{ command[0] }}">
-                                    <h5>{{ command[1] }}</h5>
-                                    <p>{{ tooltips[command[0]][0] }}<p>
+                                <div class="example small" id="box_example_{{ command }}">
+                                    <h5>{{ commands[command]['title'] }}</h5>
+                                    <p>{{ commands[command]['description'] }}<p>
                                     <h6>{{ _('Input') }}:</h6>
-                                    <pre>{{ tooltips[command[0]][1] }}</pre>
+                                    <pre>{{ commands[command]['input'] }}</pre>
                                     <h6>{{ _('Output') }}:</h6>
-                                    <pre>{{ tooltips[command[0]][2] }}</pre>
+                                    <pre>{{ commands[command]['output'] }}</pre>
                                 </div>
                             </li>
                             {% endfor %}

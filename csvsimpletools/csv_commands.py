@@ -1,58 +1,99 @@
 # coding: utf-8
 
+import operator
 import re
 from flask.ext.babel import lazy_gettext
 from unicodedata import category, normalize
 
-commands = [('sentence', lazy_gettext('Sentence Case')),
-            ('title', lazy_gettext('Title Case')),
-            ('upper', lazy_gettext('Upper Case')),
-            ('lower', lazy_gettext('Lower Case')),
-            ('concatenate', lazy_gettext('Concatenate')),
-            ('special', lazy_gettext('Remove Special Chars')),
-            ('alphanum', lazy_gettext('Alphanumeric Only')),
-            ('sequential', lazy_gettext('Sequential numbers')),
-            ('dualseq', lazy_gettext('Dual sequential numbers'))]
+# command definitions
 
-tooltips = {
-    'sentence':
-        [lazy_gettext('Add a column to the end of the CSV with the value of the first column in sentence case.'),
-         'foo bar,42',
-         'foo bar,42,Foo bar'],
-    'title':
-        [lazy_gettext('Add a column to the end of the CSV with the value of the first column in title case.'),
-         'foo bar,42',
-         'foo bar,42,Foo Bar'],
-    'upper':
-        [lazy_gettext('Add a column to the end of the CSV with the value of the first column in upper case.'),
-         'foobar,42',
-         'foobar,42,FOOBAR'],
-    'lower':
-        [lazy_gettext('Add a column to the end of the CSV with the value of the first column in lower case.'),
-         'FOOBAR,42',
-         'FOOBAR,42,foobar'],
-    'concatenate':
-        [lazy_gettext('Add a column to the end of the CSV with the value of the first and second columns concatenated.'),
-         'foobar,42,None',
-         'foobar,42,None,foobar42'],
-    'special':
-        [lazy_gettext('Add a column to the end of the CSV with the value of the first column replacing any special character.'),
-         'föôbàr,42',
-         'föôbàr,42,foobar'],
-    'alphanum':
-        [lazy_gettext('Add a column to the end of the CSV with the value of the first column keeping only letters and numbers .'),
-         'foo + bar ? 42,42',
-         'foo + bar ? 42,42,foobar42'],
-    'sequential':
-        [lazy_gettext('Add a column to the end of the CSV with a sequential number (starting with 1, with increment in each row).'),
-         'foobar,42',
-         'foobar,42,1'],
-    'dualseq':
-        [lazy_gettext('Add two columns to the end of the CSV with a sequential number for each different first and second column.'),
-         'foo,bar\nfoo,etc\nxpto,bar',
-         'foo,bar,00000001,00000001\nfoo,etc,00000001,00000002\nxpto,bar,00000002,00000001']
+commands = {
+
+    'sentence': {
+        'title': lazy_gettext('Sentence Case'),
+        'description': lazy_gettext('Add a column to the end of the CSV with the value of the first column in sentence case.'),
+        'input': 'foo bar,42',
+        'output': 'foo bar,42,Foo bar',
+        'order': 1
+    },
+
+    'title': {
+        'title': lazy_gettext('Title Case'),
+        'description': lazy_gettext('Add a column to the end of the CSV with the value of the first column in title case.'),
+        'input': 'foo bar,42',
+        'output': 'foo bar,42,Foo Bar',
+        'order': 2
+    },
+
+    'upper': {
+        'title': lazy_gettext('Upper Case'),
+        'description': lazy_gettext('Add a column to the end of the CSV with the value of the first column in upper case.'),
+        'input': 'foobar,42',
+        'output': 'foobar,42,FOOBAR',
+        'order': 3
+    },
+
+    'lower': {
+        'title': lazy_gettext('Lower Case'),
+        'description': lazy_gettext('Add a column to the end of the CSV with the value of the first column in lower case.'),
+        'input': 'FOOBAR,42',
+        'output': 'FOOBAR,42,foobar',
+        'order': 4
+    },
+
+    'concatenate': {
+        'title': lazy_gettext('Concatenate'),
+        'description': lazy_gettext('Add a column to the end of the CSV with the value of the first and second columns concatenated.'),
+        'input': 'foobar,42,None',
+        'output': 'foobar,42,None,foobar42',
+        'order': 5
+    },
+
+    'special': {
+        'title': lazy_gettext('Remove Special Chars'),
+        'description': lazy_gettext('Add a column to the end of the CSV with the value of the first column replacing any special character.'),
+        'input': 'föôbàr,42',
+        'output': 'föôbàr,42,foobar',
+        'order': 6
+    },
+
+    'alphanum': {
+        'title': lazy_gettext('Alphanumeric Only'),
+        'description': lazy_gettext('Add a column to the end of the CSV with the value of the first column keeping only letters and numbers .'),
+        'input': 'foo + bar ? 42,42',
+        'output': 'foo + bar ? 42,42,foobar42',
+        'order': 7
+    },
+
+    'sequential': {
+        'title': lazy_gettext('Sequential numbers'),
+        'description': lazy_gettext('Add a column to the end of the CSV with a sequential number (starting with 1, with increment in each row).'),
+        'input': 'foobar,42',
+        'output': 'foobar,42,1',
+        'order': 8
+    },
+
+    'dualseq': {
+        'title': lazy_gettext('Dual sequential numbers'),
+        'description': lazy_gettext('Add two columns to the end of the CSV with a sequential number for each different first and second column.'),
+        'input': 'foo,bar\nfoo,etc\nxpto,bar',
+        'output': 'foo,bar,00000001,00000001\nfoo,etc,00000001,00000002\nxpto,bar,00000002,00000001',
+        'order': 9
+    }
 }
 
+
+def get_command_list():
+    commands_order = dict()
+    for command in commands.keys():
+        commands_order[command] = commands[command]['order']
+    sorted_commands = sorted(commands_order.items(),
+                             key=operator.itemgetter(1))
+    return [c[0] for c in sorted_commands]
+
+command_list = get_command_list()
+
+# command methods
 
 def sentence(lines):
     output = list()

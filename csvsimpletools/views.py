@@ -20,7 +20,7 @@ def deafult_language():
 def index():
     return render_template('form.html',
                            commands=csv_commands.commands,
-                           tooltips=csv_commands.tooltips,
+                           command_list=csv_commands.command_list,
                            languages=app.config['LANGUAGES'],
                            lang=g.get('lang', 'en'),
                            form=GetCSV())
