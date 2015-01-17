@@ -5,6 +5,12 @@
                     <fieldset class="col-md-4">
                         <label class="h3" for="csv">1. {{_('Choose your CSV file') }}</label>
                         <input type="file" name="csv" id="csv">
+                        <label class="small" for="input_delimiter">{{ _('Input CSV delimiter') }}: </label>
+                        <select name="input_delimiter" id="input_delimiter">
+                            {% for delimiter in form.input_delimiter %}
+                            {{ delimiter }}
+                            {% endfor %}
+                        </select><br>
                     </fieldset>
 
                     <fieldset class="col-md-4" id="commands">
@@ -12,7 +18,7 @@
                         <ul class="list-unstyled">
                             {% for command in command_list %}
                             <li>
-                                <input type="radio" name="command" id="radio_command_{{ command }}" value="{{ command[0] }}">
+                                <input type="radio" name="command" id="radio_command_{{ command }}" value="{{ command }}">
                                 <label for="radio_command_{{ command }}">{{ commands[command]['title'] }}</label>
                                 <button id="btn_example_{{ command }}"
                                     class="btn btn-default btn-xs example">{{ _('Example') }}</button>
@@ -31,7 +37,13 @@
 
                     <fieldset class="col-md-4">
                         <h3>3. {{ _('Get your new CSV') }}</h3>
-                        <input id="submit_btn" type="submit" class="btn btn-primary" value="{{ _('Download') }}">
+                        <label class="small" for="output_delimiter">{{ _('Output CSV delimiter') }}: </label>
+                        <select name="output_delimiter" id="output_delimiter">
+                            {% for delimiter in form.output_delimiter %}
+                            {{ delimiter }}
+                            {% endfor %}
+                        </select><br>
+                        <input id="submit_btn" type="submit" class="btn btn-primary" value="{{ _('Download') }}"><br>
                     </fieldset>
                 
                 </form>

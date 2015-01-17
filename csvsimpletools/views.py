@@ -41,18 +41,19 @@ def result():
             temp1.write(uploaded.read())
             temp1.seek(0)
             temp1.flush()
-            lines = list(reader(temp1))
+            parsed = reader(temp1, delimiter=str(form.input_delimiter.data))
+            lines = list(parsed)
 
         # parse and process the CSV
         command = form.command.data
-        if command in csv_commands.tooltips.keys():
+        if command in csv_commands.command_list:
             new = eval('csv_commands.{}(lines)'.format(command))
         else:
             new = list(lines)
 
         # create CSV for download
         with TemporaryFile() as temp2:
-            output = writer(temp2)
+            output = writer(temp2, delimiter=str(form.output_delimiter.data))
             output.writerows(new)
             temp2.seek(0)
             content = temp2.read()

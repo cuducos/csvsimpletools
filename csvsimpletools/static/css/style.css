@@ -31,6 +31,8 @@ header ul li:first-child{
 /************************************************************/
 
 input[type="file"] { width: 100% }
+select { margin: 1em 0 2em 0 }
+label.small { font-weight: normal }
 
 /************************************************************/
 /* Tooltips                                                 */

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-10-12 19:38-0300\n"
-"PO-Revision-Date: 2014-10-12 19:41-0300\n"
+"POT-Creation-Date: 2015-01-17 15:08+0000\n"
+"PO-Revision-Date: 2015-01-17 15:04-0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -16,45 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
-"X-Generator: Poedit 1.5.4\n"
+"Language: pt\n"
+"X-Generator: Poedit 1.7.3\n"
 
-#: csvsimpletools/csv_commands.py:7
+#: csvsimpletools/csv_commands.py:13
 msgid "Sentence Case"
 msgstr "Primeira letra maiúscula"
 
-#: csvsimpletools/csv_commands.py:8
-msgid "Title Case"
-msgstr "Palavras iniciando com maiúscula"
-
-#: csvsimpletools/csv_commands.py:9
-msgid "Upper Case"
-msgstr "Maiúsculas"
-
-#: csvsimpletools/csv_commands.py:10
-msgid "Lower Case"
-msgstr "Minúsculas"
-
-#: csvsimpletools/csv_commands.py:11
-msgid "Concatenate"
-msgstr "Concatenar"
-
-#: csvsimpletools/csv_commands.py:12
-msgid "Remove Special Chars"
-msgstr "Remover caracteres especiais"
-
-#: csvsimpletools/csv_commands.py:13
-msgid "Alphanumeric Only"
-msgstr "Caracteres alfanuméricos"
-
 #: csvsimpletools/csv_commands.py:14
-msgid "Sequential numbers"
-msgstr "Números sequenciais"
-
-#: csvsimpletools/csv_commands.py:15
-msgid "Dual sequential numbers"
-msgstr "Números sequenciais duplos"
-
-#: csvsimpletools/csv_commands.py:19
 msgid ""
 "Add a column to the end of the CSV with the value of the first column in "
 "sentence case."
@@ -62,7 +31,11 @@ msgstr ""
 "Adiciona uma coluna à direita do CSV utilizando o conteúdo da primeira "
 "coluna e convertendo a primeira letra para maiúscula."
 
-#: csvsimpletools/csv_commands.py:23
+#: csvsimpletools/csv_commands.py:21
+msgid "Title Case"
+msgstr "Palavras iniciando com maiúscula"
+
+#: csvsimpletools/csv_commands.py:22
 msgid ""
 "Add a column to the end of the CSV with the value of the first column in "
 "title case."
@@ -70,7 +43,11 @@ msgstr ""
 "Adiciona uma coluna à direita do CSV utilizando o conteúdo da primeira "
 "coluna e convertendo a primeira letra de cada palavra para maiúscula."
 
-#: csvsimpletools/csv_commands.py:27
+#: csvsimpletools/csv_commands.py:29
+msgid "Upper Case"
+msgstr "Maiúsculas"
+
+#: csvsimpletools/csv_commands.py:30
 msgid ""
 "Add a column to the end of the CSV with the value of the first column in "
 "upper case."
@@ -78,7 +55,11 @@ msgstr ""
 "Adiciona uma coluna à direita do CSV utilizando o conteúdo da primeira "
 "coluna com todas as letras maiúsculas."
 
-#: csvsimpletools/csv_commands.py:31
+#: csvsimpletools/csv_commands.py:37
+msgid "Lower Case"
+msgstr "Minúsculas"
+
+#: csvsimpletools/csv_commands.py:38
 msgid ""
 "Add a column to the end of the CSV with the value of the first column in "
 "lower case."
@@ -86,7 +67,11 @@ msgstr ""
 "Adiciona uma coluna à direita do CSV utilizando o conteúdo da primeira "
 "coluna com todas as letras minúsculas."
 
-#: csvsimpletools/csv_commands.py:35
+#: csvsimpletools/csv_commands.py:45
+msgid "Concatenate"
+msgstr "Concatenar"
+
+#: csvsimpletools/csv_commands.py:46
 msgid ""
 "Add a column to the end of the CSV with the value of the first and second "
 "columns concatenated."
@@ -94,7 +79,11 @@ msgstr ""
 "Adiciona uma coluna à direita do CSV concatenando o conteúdo da primeira e "
 "da segunda coluna."
 
-#: csvsimpletools/csv_commands.py:39
+#: csvsimpletools/csv_commands.py:53
+msgid "Remove Special Chars"
+msgstr "Remover caracteres especiais"
+
+#: csvsimpletools/csv_commands.py:54
 msgid ""
 "Add a column to the end of the CSV with the value of the first column "
 "replacing any special character."
@@ -102,7 +91,11 @@ msgstr ""
 "Adiciona uma coluna à direita do CSV utilizando o conteúdo da primeira "
 "coluna removendo caracteres especiais."
 
-#: csvsimpletools/csv_commands.py:43
+#: csvsimpletools/csv_commands.py:61
+msgid "Alphanumeric Only"
+msgstr "Caracteres alfanuméricos"
+
+#: csvsimpletools/csv_commands.py:62
 msgid ""
 "Add a column to the end of the CSV with the value of the first column "
 "keeping only letters and numbers ."
@@ -110,7 +103,11 @@ msgstr ""
 "Adiciona uma coluna à direita do CSV utilizando o conteúdo da primeira "
 "mantendo apenas letras e números."
 
-#: csvsimpletools/csv_commands.py:47
+#: csvsimpletools/csv_commands.py:69
+msgid "Sequential numbers"
+msgstr "Números sequenciais"
+
+#: csvsimpletools/csv_commands.py:70
 msgid ""
 "Add a column to the end of the CSV with a sequential number (starting with "
 "1, with increment in each row)."
@@ -118,19 +115,24 @@ msgstr ""
 "Adiciona uma coluna à direita do CSV com uma sequêcia numérica (começando "
 "com 1, e aumentando a cada linha)."
 
-#: csvsimpletools/csv_commands.py:51
+#: csvsimpletools/csv_commands.py:77
+msgid "Dual sequential numbers"
+msgstr "Números sequenciais duplos"
+
+#: csvsimpletools/csv_commands.py:78
 msgid ""
 "Add two columns to the end of the CSV with a sequential number for each "
 "different first and second column."
 msgstr ""
-"Adiciona duas colunas à direita do CSV com identificadores (números) únicos "
-"para os conteúdos da primeira e segunda coluna."
+"Adiciona duas colunas à direita do CSV com identificadores (números) "
+"únicos para os conteúdos da primeira e segunda coluna."
 
 #: csvsimpletools/forms.py:15
-msgid "Please, use .csv files only."
-msgstr "Por favor, utilize apenas arquivos .csv."
+msgid "Please, a CSV file (.txt or .csv)"
+msgstr "Por favor, utilize apenas arquivos .csv ou .txt."
 
-#: csvsimpletools/templates/base.html:8 csvsimpletools/templates/base.html:21
+#: csvsimpletools/templates/base.html:8
+#: csvsimpletools/templates/base.html:21
 #: csvsimpletools/templates/base.html:40
 msgid "CSV Simple Tools"
 msgstr "CSV Simples"
@@ -142,8 +144,8 @@ msgstr "por"
 #: csvsimpletools/templates/base.html:41
 msgid "This project uses no database at all, no input data is stored"
 msgstr ""
-"Esse projeto não utiliza banco de dados e nenhuma informação fica armazenada "
-"no servidor"
+"Esse projeto não utiliza banco de dados e nenhuma informação fica "
+"armazenada no servidor"
 
 #: csvsimpletools/templates/base.html:42
 msgid "It's open source, check"
@@ -157,26 +159,34 @@ msgstr "repositório no GitHub"
 msgid "Choose your CSV file"
 msgstr "Escolha seu CSV"
 
-#: csvsimpletools/templates/form.html:11
+#: csvsimpletools/templates/form.html:8
+msgid "Input CSV delimiter"
+msgstr "Delimitador do CSV original"
+
+#: csvsimpletools/templates/form.html:17
 msgid "Choose what to do"
 msgstr "Escolha que fazer"
 
-#: csvsimpletools/templates/form.html:18
+#: csvsimpletools/templates/form.html:24
 msgid "Example"
 msgstr "Exemplo"
 
-#: csvsimpletools/templates/form.html:22
+#: csvsimpletools/templates/form.html:28
 msgid "Input"
 msgstr "Entrada"
 
-#: csvsimpletools/templates/form.html:24
+#: csvsimpletools/templates/form.html:30
 msgid "Output"
 msgstr "Resultado"
 
-#: csvsimpletools/templates/form.html:32
+#: csvsimpletools/templates/form.html:39
 msgid "Get your new CSV"
 msgstr "Baixe seu novo CSV"
 
-#: csvsimpletools/templates/form.html:34
+#: csvsimpletools/templates/form.html:40
+msgid "Output CSV delimiter"
+msgstr "Delimitador do novo CSV"
+
+#: csvsimpletools/templates/form.html:46
 msgid "Download"
 msgstr "Download"

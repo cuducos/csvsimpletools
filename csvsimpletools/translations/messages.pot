@@ -1,14 +1,14 @@
 # Translations template for PROJECT.
-# Copyright (C) 2014 ORGANIZATION
+# Copyright (C) 2015 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-10-12 19:38-0300\n"
+"POT-Creation-Date: 2015-01-17 15:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,98 +17,98 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: csvsimpletools/csv_commands.py:7
+#: csvsimpletools/csv_commands.py:13
 msgid "Sentence Case"
 msgstr ""
 
-#: csvsimpletools/csv_commands.py:8
-msgid "Title Case"
-msgstr ""
-
-#: csvsimpletools/csv_commands.py:9
-msgid "Upper Case"
-msgstr ""
-
-#: csvsimpletools/csv_commands.py:10
-msgid "Lower Case"
-msgstr ""
-
-#: csvsimpletools/csv_commands.py:11
-msgid "Concatenate"
-msgstr ""
-
-#: csvsimpletools/csv_commands.py:12
-msgid "Remove Special Chars"
-msgstr ""
-
-#: csvsimpletools/csv_commands.py:13
-msgid "Alphanumeric Only"
-msgstr ""
-
 #: csvsimpletools/csv_commands.py:14
-msgid "Sequential numbers"
-msgstr ""
-
-#: csvsimpletools/csv_commands.py:15
-msgid "Dual sequential numbers"
-msgstr ""
-
-#: csvsimpletools/csv_commands.py:19
 msgid ""
 "Add a column to the end of the CSV with the value of the first column in "
 "sentence case."
 msgstr ""
 
-#: csvsimpletools/csv_commands.py:23
+#: csvsimpletools/csv_commands.py:21
+msgid "Title Case"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:22
 msgid ""
 "Add a column to the end of the CSV with the value of the first column in "
 "title case."
 msgstr ""
 
-#: csvsimpletools/csv_commands.py:27
+#: csvsimpletools/csv_commands.py:29
+msgid "Upper Case"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:30
 msgid ""
 "Add a column to the end of the CSV with the value of the first column in "
 "upper case."
 msgstr ""
 
-#: csvsimpletools/csv_commands.py:31
+#: csvsimpletools/csv_commands.py:37
+msgid "Lower Case"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:38
 msgid ""
 "Add a column to the end of the CSV with the value of the first column in "
 "lower case."
 msgstr ""
 
-#: csvsimpletools/csv_commands.py:35
+#: csvsimpletools/csv_commands.py:45
+msgid "Concatenate"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:46
 msgid ""
 "Add a column to the end of the CSV with the value of the first and second"
 " columns concatenated."
 msgstr ""
 
-#: csvsimpletools/csv_commands.py:39
+#: csvsimpletools/csv_commands.py:53
+msgid "Remove Special Chars"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:54
 msgid ""
 "Add a column to the end of the CSV with the value of the first column "
 "replacing any special character."
 msgstr ""
 
-#: csvsimpletools/csv_commands.py:43
+#: csvsimpletools/csv_commands.py:61
+msgid "Alphanumeric Only"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:62
 msgid ""
 "Add a column to the end of the CSV with the value of the first column "
 "keeping only letters and numbers ."
 msgstr ""
 
-#: csvsimpletools/csv_commands.py:47
+#: csvsimpletools/csv_commands.py:69
+msgid "Sequential numbers"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:70
 msgid ""
 "Add a column to the end of the CSV with a sequential number (starting "
 "with 1, with increment in each row)."
 msgstr ""
 
-#: csvsimpletools/csv_commands.py:51
+#: csvsimpletools/csv_commands.py:77
+msgid "Dual sequential numbers"
+msgstr ""
+
+#: csvsimpletools/csv_commands.py:78
 msgid ""
 "Add two columns to the end of the CSV with a sequential number for each "
 "different first and second column."
 msgstr ""
 
 #: csvsimpletools/forms.py:15
-msgid "Please, use .csv files only."
+msgid "Please, a CSV file (.txt or .csv)"
 msgstr ""
 
 #: csvsimpletools/templates/base.html:8 csvsimpletools/templates/base.html:21
@@ -136,27 +136,35 @@ msgstr ""
 msgid "Choose your CSV file"
 msgstr ""
 
-#: csvsimpletools/templates/form.html:11
+#: csvsimpletools/templates/form.html:8
+msgid "Input CSV delimiter"
+msgstr ""
+
+#: csvsimpletools/templates/form.html:17
 msgid "Choose what to do"
 msgstr ""
 
-#: csvsimpletools/templates/form.html:18
+#: csvsimpletools/templates/form.html:24
 msgid "Example"
 msgstr ""
 
-#: csvsimpletools/templates/form.html:22
+#: csvsimpletools/templates/form.html:28
 msgid "Input"
 msgstr ""
 
-#: csvsimpletools/templates/form.html:24
+#: csvsimpletools/templates/form.html:30
 msgid "Output"
 msgstr ""
 
-#: csvsimpletools/templates/form.html:32
+#: csvsimpletools/templates/form.html:39
 msgid "Get your new CSV"
 msgstr ""
 
-#: csvsimpletools/templates/form.html:34
+#: csvsimpletools/templates/form.html:40
+msgid "Output CSV delimiter"
+msgstr ""
+
+#: csvsimpletools/templates/form.html:46
 msgid "Download"
 msgstr ""
 
