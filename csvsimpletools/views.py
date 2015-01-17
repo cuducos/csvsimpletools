@@ -65,7 +65,7 @@ def result():
         return r
 
     # else, return error
-    return 'Error(s): '.format(form.errors)
+    return 'Error(s): {}'.format(form.errors)
 
 
 @app.before_request
