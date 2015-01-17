@@ -7,3 +7,4 @@
 /contrib/*.csv
 .vagrant
 *.log
+.idea/
