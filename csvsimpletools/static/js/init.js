@@ -1,5 +1,6 @@
 var tried_to_submit = false;
 var required_fields = ['csv', 'input_delimiter', 'command'];
+var changed_output_delimiter = false;
 
 $(document).ready(function(){
 
@@ -26,6 +27,10 @@ $(document).ready(function(){
   }
 
   $('input[disabled]').removeAttr('disabled');
+  $('select[name=input_delimiter]').change(update_output_delimiter);
+  $('select[name=output_delimiter]').change(function(){
+    changed_output_delimiter = true;
+  });
 
 });
 
@@ -62,4 +67,12 @@ var is_valid = function () {
 
     }
 
+};
+
+var update_output_delimiter = function () {
+  if (!changed_output_delimiter)  {
+    var form = document.forms[0];
+    var value = form.input_delimiter.value;
+    if (value) form.output_delimiter.value = value;
+  }
 };
