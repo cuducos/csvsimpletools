@@ -77,7 +77,7 @@ commands = {
         'title': lazy_gettext('Dual sequential numbers'),
         'description': lazy_gettext('Add two columns to the end of the CSV with a sequential number for each different first and second column.'),
         'input': 'foo,bar\nfoo,etc\nxpto,bar',
-        'output': 'foo,bar,00000001,00000001\nfoo,etc,00000001,00000002\nxpto,bar,00000002,00000001',
+        'output': 'foo,bar,foo,00000001\nfoo,etc,foo,00000002\nxpto,bar,xpto,00000001',
         'order': 9
     }
 }
@@ -200,9 +200,8 @@ def dualseq(lines):
     # second loop: create the codes
     for index, line in enumerate(output):
         obj = grouped[line[0]]
-        first_code = '{0:0>8}'.format(obj['index'])
         second_code = '{0:0>8}'.format(obj['count'])
-        output[index].extend([first_code, second_code])
+        output[index].extend([line[0], second_code])
         obj['count'] += 1
 
     return output
