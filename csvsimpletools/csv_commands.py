@@ -181,27 +181,28 @@ def sequential(lines):
 def dualseq(lines):
 
     # support vars
-    output = list()
-    a_fields = list()
-    b_fields = list()
+    output = list(lines)
+    grouped = dict()
+    index = 1
 
-    # first loop: get all different fields
+    # first loop: group all values by the first field
     for line in lines:
-
-        # create lists with unique items
-        if line[0] not in a_fields:
-            a_fields.append(line[0])
-        if line[1] not in b_fields:
-            b_fields.append(line[1])
-
-        # feed the output list
-        output.append(line)
+        try:
+            grouped[line[0]]['values'].append(line[1])
+        except KeyError:
+            grouped[line[0]] = {
+                'index': index,
+                'values': [line[1]],
+                'count': 1
+            }
+            index += 1
 
     # second loop: create the codes
-    for i in range(0, len(output)):
-        a_code = '{0:0>8}'.format(a_fields.index(output[i][0]) + 1)
-        b_code = '{0:0>8}'.format(b_fields.index(output[i][1]) + 1)
-        output[i].append(a_code)
-        output[i].append(b_code)
+    for index, line in enumerate(output):
+        obj = grouped[line[0]]
+        first_code = '{0:0>8}'.format(obj['index'])
+        second_code = '{0:0>8}'.format(obj['count'])
+        output[index].extend([first_code, second_code])
+        obj['count'] += 1
 
     return output
