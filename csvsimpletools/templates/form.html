@@ -3,36 +3,43 @@
                 <form class="row" action="/{{ lang }}/result" method="POST" enctype="multipart/form-data">
                     {{ form.csrf_token }} 
                     <fieldset class="col-md-4">
-                        <label class="h3" for="csv">1. {{_('Choose your CSV file') }}</label>
-                        <input type="file" name="csv" id="csv">
-                        <label class="small" for="input_delimiter">{{ _('Input CSV delimiter') }}: </label>
-                        <select name="input_delimiter" id="input_delimiter">
-                            {% for delimiter in form.input_delimiter %}
-                            {{ delimiter }}
-                            {% endfor %}
-                        </select><br>
+                        <div class="form-group">
+                            <label class="h3 control-label" for="csv">1. {{_('Choose your CSV file') }}</label>
+                            <input type="file" name="csv" id="csv">
+                        </div>
+                        <div class="form-group">
+                            <label class="small control-label" for="input_delimiter">{{ _('Input CSV delimiter') }}: </label>
+                            <select name="input_delimiter" id="input_delimiter">
+                                <option value=""></option>
+                                {% for delimiter in form.input_delimiter %}
+                                {{ delimiter }}
+                                {% endfor %}
+                            </select>
+                        </div>
                     </fieldset>
 
                     <fieldset class="col-md-4" id="commands">
                         <h3>2. {{ _('Choose what to do') }}</h3>
-                        <ul class="list-unstyled">
-                            {% for command in command_list %}
-                            <li>
-                                <input type="radio" name="command" id="radio_command_{{ command }}" value="{{ command }}">
-                                <label for="radio_command_{{ command }}">{{ commands[command]['title'] }}</label>
-                                <button id="btn_example_{{ command }}"
-                                    class="btn btn-default btn-xs example">{{ _('Example') }}</button>
-                                <div class="example small" id="box_example_{{ command }}">
-                                    <h5>{{ commands[command]['title'] }}</h5>
-                                    <p>{{ commands[command]['description'] }}<p>
-                                    <h6>{{ _('Input') }}:</h6>
-                                    <pre>{{ commands[command]['input'] }}</pre>
-                                    <h6>{{ _('Output') }}:</h6>
-                                    <pre>{{ commands[command]['output'] }}</pre>
-                                </div>
-                            </li>
-                            {% endfor %}
-                        </ul>
+                        <div class="form-group">
+                            <ul class="list-unstyled">
+                                {% for command in command_list %}
+                                <li>
+                                    <input type="radio" name="command" id="radio_command_{{ command }}" value="{{ command }}">
+                                    <label class="control-label" for="radio_command_{{ command }}">{{ commands[command]['title'] }}</label>
+                                    <button id="btn_example_{{ command }}"
+                                        class="btn btn-default btn-xs example">{{ _('Example') }}</button>
+                                    <div class="example small" id="box_example_{{ command }}">
+                                        <h5>{{ commands[command]['title'] }}</h5>
+                                        <p>{{ commands[command]['description'] }}<p>
+                                        <h6>{{ _('Input') }}:</h6>
+                                        <pre>{{ commands[command]['input'] }}</pre>
+                                        <h6>{{ _('Output') }}:</h6>
+                                        <pre>{{ commands[command]['output'] }}</pre>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                     </fieldset>
 
                     <fieldset class="col-md-4">
