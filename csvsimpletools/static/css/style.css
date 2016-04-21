@@ -33,6 +33,12 @@ header ul li:first-child{
 input[type="file"] { width: 100% }
 select { margin: 1em 0 2em 0 }
 label.small { font-weight: normal }
+.has-error {
+  background-color: rgb(242, 222, 222);
+  border-radius: 5px;
+  border: 1px solid rgb(171, 67, 63);
+  padding: 6px 12px;
+}
 
 /************************************************************/
 /* Tooltips                                                 */
