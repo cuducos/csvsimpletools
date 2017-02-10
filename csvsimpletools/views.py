@@ -10,11 +10,15 @@ from tempfile import TemporaryFile
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+from csvsimpletools.commands import commands
+from csvsimpletools.forms import GetCSV
 
 @app.route('/')
 def deafult_language():
         return redirect('/en')
 
+COMMANDS = {c.function.__name__: c for c in commands}
+main = Blueprint(__name__, 'main')
 
 @app.route('/<lang>')
 def index():

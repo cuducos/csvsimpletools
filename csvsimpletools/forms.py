@@ -3,10 +3,10 @@ from flask_wtf import Form
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 from wtforms import RadioField, SelectField
 
-from csv_commands import ordered_commands
+from csvsimpletools.commands import commands
 
 
-COMMANDS = tuple((c.method.__name__, c.title) for c in ordered_commands)
+COMMANDS = tuple((c.function.__name__, c.title) for c in commands)
 DELIMITERS = ((',', ','), (';', ';'), ('\t', 'tab'))
 FILE_VALIDATOR = (
     FileRequired(),
