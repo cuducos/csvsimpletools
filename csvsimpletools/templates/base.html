@@ -1,47 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="shortcut icon" href="/static/feed-icon-28x28.png" type="image/x-icon">
-        <title>{{ _('CSV Simple Tools') }}</title>
-        <meta name="description" content="Simple tools for CSV files.">
-        <meta name="keywords" content="csv, case, special chars, concatenate, lower, upper">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <script src="/static/js/init.js?v=2"></script>
-        <link href="/static/css/style.css?v=2" rel="stylesheet">
-    </head>
-    <body id="home">
-        <div class="container">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="/static/feed-icon-28x28.png" type="image/x-icon">
+    <title>{{ _('CSV Simple Tools') }}</title>
+    <meta name="description" content="Simple tools for CSV files.">
+    <meta name="keywords" content="csv, case, special chars, concatenate, lower, upper">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="/static/js/init.js"></script>
+    <link href="/static/css/style.css" rel="stylesheet">
+  </head>
+  <body id="home">
+    <div class="container">
 
-            <header class="row">
-                <h1 class="col-md-8"><a href="/">{{ _('CSV Simple Tools') }}</a></h1>
-                <ul class="col-md-4 list-inline text-right small">
-                {% for code in languages.keys() %}
-                    <li>
-                        {% if code != lang %}
-                        <a href="/{{ code }}">
-                        {% endif %}
-                            {{ languages[code] }}
-                        {% if code != lang %}
-                        </a>
-                        {% endif %}
-                    </li>
-                {% endfor %}
-                </ul>
-            </header>
+      <header class="row">
+        <h1 class="col-md-8"><a href="/">{{ _('CSV Simple Tools') }}</a></h1>
+        <ul class="col-md-4 list-inline text-right small">
+          {% for code, title in languages.items() %}
+          <li>
+            {% if code != lang %}<a href="/{{ code }}">{% endif %}
+              {{ title }}
+            {% if code != lang %}</a>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </header>
 
-            {% block content %}{% endblock %}
-            
-            <footer class="row small">
-                <p class="col-md-4 text-left">{{ _('CSV Simple Tools') }} (2014) {{ _('by') }} <a href="http://cuducos.me/">Eduardo Cuducos</a>.</p>
-                <p class="col-md-4 text-center">{{ _('This project uses no database at all, no input data is stored') }}.</p>
-                <p class="col-md-4 text-right">{{ _("It's open source, check") }} <a href="https://github.com/cuducos/csvsimpletools">{{ _('this project at GitHub') }}</a>.</p>
-            </footer>
+      {% block content %}{% endblock %}
 
-        </div><!-- end .container -->
-    </body>
+      <footer class="row small">
+        <p class="col-md-4 text-left">{{ _('CSV Simple Tools') }} (2017) {{ _('by') }} <a href="http://cuducos.me/">Eduardo Cuducos</a>.</p>
+        <p class="col-md-4 text-center">{{ _('This project uses no database at all, no input data is stored') }}.</p>
+        <p class="col-md-4 text-right">{{ _("It's open source, check") }} <a href="https://github.com/cuducos/csvsimpletools">{{ _('this project at GitHub') }}</a>.</p>
+      </footer>
+
+    </div><!-- end .container -->
+  </body>
 </html>
