@@ -1,27 +1,14 @@
-# coding: utf-8
+from babel import negotiate_locale
+from flask import Flask, g, request
+from flask_babel import Babel
+from flask_wtf.csrf import CSRFProtect
 
-from flask import Flask
-from flask.ext.babel import Babel
-from flask.ext.script import Manager
-from flask_wtf.csrf import CsrfProtect
+from csvsimpletools.views import main
+
 
 app = Flask('csvsimpletools')
 app.config.from_object('config')
-manager = Manager(app)
-CsrfProtect(app)
+app.register_blueprint(main)
+
+CSRFProtect(app)
 babel = Babel(app)
-
-if not app.config['DEBUG']:
-    import logging
-    from logging.handlers import RotatingFileHandler
-    filepath = '{}/errors.log'.format(app.config['BASEDIR'])
-    handler = RotatingFileHandler(filepath, 'a', 1 * 1024 * 1024, 10)
-    row = '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
-    formatter = logging.Formatter(row)
-    handler.setFormatter(formatter)
-    handler.setLevel(logging.INFO)
-    app.logger.setLevel(logging.INFO)
-    app.logger.addHandler(handler)
-    app.logger.info('{} started successfully.'.format(app.config['TITLE']))
-
-from csvsimpletools import views

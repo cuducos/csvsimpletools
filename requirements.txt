@@ -1,7 +1,5 @@
-Flask==0.10.1
-Flask-Babel==0.9
-Flask-Script==2.0.5
-Flask-WTF==0.12
-gunicorn==19.4.5
+Flask==0.12
+Flask-Babel==0.11.1
+Flask-WTF==0.14.2
+gunicorn==19.6.0
 python-decouple==3.0
-Unipath==1.1
