@@ -12,3 +12,15 @@ app.register_blueprint(main)
 
 CSRFProtect(app)
 babel = Babel(app)
+
+
+@babel.localeselector
+def get_locale():
+    locales = app.config.get('LOCALES', {}).keys()
+    sent = request.accept_languages.values()
+    g.locale = negotiate_locale((v.replace('-', '_') for v in sent), locales)
+
+    if not g.locale:
+        g.locale = 'en'
+
+    return g.locale
