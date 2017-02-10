@@ -1,21 +1,15 @@
 # CSV Simple Tools
 
-* **Official page**: [http://csvsimpletools.herokuapp.com/](http://csvsimpletools.herokuapp.com/)
-* **Author**: [Eduardo Cuducos](http://cuducos.me/).
+Simple web app to run simple tasks in CSV files — e.g. concatenate, lower case, upper case, sentence case, replace special chars etc.
 
-## About
+## Install
 
-A web app to run simple tasks in CSV files – e.g. concatenate, lower case, upper case, sentence case, replace special chars etc.
-
-Installation
-------------
-
-* If you want, get your [Python](http://www.python.org) running under a [virtualenv](https://pypi.python.org/pypi/virtualenv).
-* Install whatever is needed with `pip install -r requirements.txt`.
-* Then `python manage.py runserver` to start your server.
-
-License
--------
-Copyright (c) 2014 Eduardo Cuducos.
-
-Licensed under the [MIT license](https://github.com/cuducos/csvsimpletools/raw/master/MIT-LICENSE).
+1. If you want get your [Python 3.6](http://www.python.org) running under a [virtualenv](https://pypi.python.org/pypi/virtualenv)
+1. Install the requirements:<br>
+   `$ python -m pip install -r requirements.txt`
+1. Create Flask variables:<br>
+   `$ export FLASK_APP=csvsimpletools/__init__.py`<br>
+1. Optionally turn the debug mode on:<br>
+   `$ export FLASK_DEBUG=1`
+1. Then start your server:<br>
+   `$ flask run`
