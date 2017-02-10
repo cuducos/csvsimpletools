@@ -1,46 +1,43 @@
-# coding: utf-8
-
-from datetime import datetime
-from random import randrange
-from unipath import Path
-
-
-def r_name():
-    color = ["red", "Blue", "BLACK", "O-ran-ge"]
-    tool = ["Hammer", "drill", "Poça", "KNI?FE"]
-    r_color = color[randrange(0, len(color))]
-    r_tool = tool[randrange(0, len(tool))]
-    return '{} {}'.format(r_color, r_tool)
+from argparse import ArgumentParser
+from csv import writer
+from os import path
+from random import choice, randrange
 
 
-def create_line(i):
-    key = '{0:0>6}'.format(i)
-    return '{},{}'.format(r_name(), key)
+def random_line(index):
+    colors = ('red', 'Blue', 'BLACK', 'O-ran-ge')
+    tools = ('Hammer', 'drill', 'Poça', 'KNI?FE')
+    index = str(index + 1).zfill(6)
+    return index, ' '.join(map(choice, (colors, tools)))
 
 
-def create_csv(lines):
-    content = map(lambda x: create_line(x + 1), range(0, lines))
-    return '\n'.join(content)
+def create_csv(file_path, lines):
+    with open(file_path, 'w') as handler:
+        csv_writer = writer(handler)
+        for index in range(lines):
+            csv_writer.writerow(random_line(index))
 
 
 def filesize(size):
-    sizes = {
-        9: 'Gb',
-        6: 'Mb',
-        3: 'Kb',
-        0: 'bytes'
-    }
-    for i in [9, 6, 3, 0]:
-        if size >= 10 ** i:
-            return '{:.1f}'.format(size / (10.0 ** i)) + sizes[i]
-    return '0 %s' % sizes[0]
+    sizes = {9: 'Gb', 6: 'Mb', 3: 'Kb', 0: 'bytes'}
+    for power in range(9, -1, -3):
+        if size >= 10 ** power:
+            size = size // 10 ** power
+            return f'{size:,}{sizes.get(power)}'
+    return f'0{sizes.get(0)}'
 
-date_time = datetime.now()
-filename = 'sample-{}.csv'.format(date_time.strftime('%Y%m%d%H%M%S'))
-handler = Path(filename)
-lines = randrange(50 * 10 ** 3, 150 * 10 ** 3)
-content = create_csv(lines)
-handler.write_file(content)
-size = filesize(handler.size())
 
-print '==> {} was created with {} lines ({})'.format(filename, lines, size)
+if __name__ == '__main__':
+
+    parser = ArgumentParser(description='A tool to create CSV samples')
+    parser.add_argument('filename')
+    parser.add_argument('-l', '--lines')
+
+    args = parser.parse_args()
+    if path.exists(args.filename):
+        raise RuntimeError('{args.filename} already exists.')
+
+    lines = args.lines or randrange(50, 150) * 10 ** 3
+    create_csv(args.filename, lines)
+    size = filesize(path.getsize(args.filename))
+    print(f'👍  {args.filename} was created with {lines:,} lines ({size})')
