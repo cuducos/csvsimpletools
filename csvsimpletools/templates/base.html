@@ -20,7 +20,7 @@
       <header class="row">
         <h1 class="col-md-8"><a href="/">{{ _('CSV Simple Tools') }}</a></h1>
         <ul class="col-md-4 list-inline text-right small">
-          {% for code, title in languages.items() %}
+          {% for code, title in config['LANGUAGES'].items() %}
           <li>
             {% if code != lang %}<a href="/{{ code }}">{% endif %}
               {{ title }}

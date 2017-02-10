@@ -1,90 +1,45 @@
-# coding: utf-8
-import csv_commands
-import sys
 from csv import reader, writer
-from csvsimpletools import app, babel
-from flask import g, make_response, redirect, render_template, request
-from forms import GetCSV
 from tempfile import TemporaryFile
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+from flask import Blueprint, jsonify, make_response, render_template, request
 
 from csvsimpletools.commands import commands
 from csvsimpletools.forms import GetCSV
 
-@app.route('/')
-def deafult_language():
-        return redirect('/en')
 
 COMMANDS = {c.function.__name__: c for c in commands}
 main = Blueprint(__name__, 'main')
 
-@app.route('/<lang>')
-def index():
-    return render_template('form.html',
-                           commands=csv_commands.commands,
-                           command_list=csv_commands.command_list,
-                           languages=app.config['LANGUAGES'],
-                           lang=g.get('lang', 'en'),
-                           form=GetCSV())
 
+@main.route('/')
+@main.route('/<lang>')
+def index(lang='en', methods=('GET', 'POST')):
 
-@app.route('/<lang>/result', methods=('GET', 'POST'))
-def result():
-
-    # load form
     form = GetCSV()
+    if request.method == 'POST':
+        return convert(form)
 
-    # if uploaded info is valid, generate new CSV accordingly
-    if form.validate_on_submit():
-
-        # copy uploaded content to a temp file
-        uploaded = request.files['csv']
-        with TemporaryFile() as temp1:
-            temp1.write(uploaded.read())
-            temp1.seek(0)
-            temp1.flush()
-            parsed = reader(temp1, delimiter=str(form.input_delimiter.data))
-            lines = list(parsed)
-
-        # parse and process the CSV
-        command = form.command.data
-        if command in csv_commands.command_list:
-            new = eval('csv_commands.{}(lines)'.format(command))
-        else:
-            new = list(lines)
-
-        # create CSV for download
-        with TemporaryFile() as temp2:
-            output = writer(temp2, delimiter=str(form.output_delimiter.data))
-            output.writerows(new)
-            temp2.seek(0)
-            content = temp2.read()
-
-        # generate response
-        f = uploaded.filename
-        r = make_response(content)
-        r.headers["Content-Type"] = "text/csv"
-        r.headers["Content-Disposition"] = 'attachment; filename={}'.format(f)
-        return r
-
-    # else, return error
-    return 'Error(s): {}'.format(form.errors)
+    return render_template('form.html', commands=COMMANDS, form=form)
 
 
-@app.before_request
-def before():
-    if request.view_args and 'lang' in request.view_args:
-        allow = app.config['LANGUAGES'].keys()
-        user_choice = request.view_args['lang']
-        if user_choice in allow:
-            g.lang = user_choice
-        else:
-            g.lang = request.accept_languages.best_match(allow)
-        request.view_args.pop('lang')
+def convert(form):
 
+    if not form.validate_on_submit():
+        return jsonify(form.errors), 422
 
-@babel.localeselector
-def get_locale():
-    return g.get('lang', 'en')
+    requested = form.command.data
+    command = COMMANDS.get(form.command.data)
+    if not command:
+        return jsonify({'error': f'Command {requested} not found'}), 422
+
+    uploaded = request.files.get('csv')
+    delimiter = form.input_delimiter.data
+    content = command.function(reader(uoloaded, delimiter=delimiter))
+
+    headers = {
+        'Content-Type': 'text/csv',
+        'Content-Disposition': f'attachment; filename={uploaded.filename}'
+    }
+    response = make_response(content)
+    response.headers.update(headers)
+    return response

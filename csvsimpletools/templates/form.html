@@ -22,7 +22,7 @@
                         <h3>2. {{ _('Choose what to do') }}</h3>
                         <div class="form-group">
                             <ul class="list-unstyled">
-                                {% for command in command_list %}
+                                {% for command in commands %}
                                 <li>
                                     <input type="radio" name="command" id="radio_command_{{ command }}" value="{{ command }}">
                                     <label class="control-label" for="radio_command_{{ command }}">{{ commands[command]['title'] }}</label>
