@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-                <form class="row" action="/{{ lang }}/result" method="POST" enctype="multipart/form-data">
+                <form class="row" method="POST" enctype="multipart/form-data">
                     {{ form.csrf_token }} 
                     <fieldset class="col-md-4">
                         <div class="form-group">
